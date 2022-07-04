@@ -96,6 +96,9 @@ module.exports = merge(commonConfig, {
       ],
       append: false,
     }),
+    // open Scope Hoisting default by production mode
+    // https://webpack.docschina.org/plugins/module-concatenation-plugin/
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new CleanWebpackPlugin(),
   ],
   stats: "normal", //标准输出
