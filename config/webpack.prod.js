@@ -8,6 +8,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
+const webpack = require("webpack");
 
 module.exports = merge(commonConfig, {
   mode: "production",
