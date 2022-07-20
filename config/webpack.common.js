@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    main: "./src/index.jsx",
+    main: "./src/index",
   },
 
   resolve: {
@@ -25,7 +25,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|tsx)$/,
         use: [
           {
             loader: "babel-loader",
