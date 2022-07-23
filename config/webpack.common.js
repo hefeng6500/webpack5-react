@@ -5,7 +5,6 @@ module.exports = {
   entry: {
     main: "./src/index",
   },
-
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
   },
@@ -25,7 +24,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx)$/,
         use: [
           {
             loader: "babel-loader",
@@ -34,6 +33,7 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      { test: /\.tsx?$/, loader: "ts-loader" },
     ],
   },
   plugins: [

@@ -12,6 +12,7 @@ const webpack = require("webpack");
 
 module.exports = merge(commonConfig, {
   mode: "production",
+  devtool: "none",
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "../dist"),
@@ -20,7 +21,6 @@ module.exports = merge(commonConfig, {
     react: "React",
     "react-dom": "ReactDOM",
   },
-  devtool: "source-map",
   module: {
     rules: [
       {
