@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { Counter } from "./features/counter/Counter";
+import { Counter } from "./features/Counter/Counter";
 import Home from "./features/Home/Home";
 import About from "./features/About/About";
 
