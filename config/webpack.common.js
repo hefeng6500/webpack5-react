@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+console.log("src", path.resolve(__dirname, "../src"));
 
 module.exports = {
   entry: {
@@ -7,6 +8,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    alias: {
+      "@": path.resolve(__dirname, "../src"),
+    },
   },
   module: {
     rules: [

@@ -12,9 +12,8 @@ const webpack = require("webpack");
 
 module.exports = merge(commonConfig, {
   mode: "production",
-  devtool: "none",
   output: {
-    filename: "[name].js",
+    filename: "./assets/[name]-[contenthash].js",
     path: path.resolve(__dirname, "../dist"),
   },
   externals: {
@@ -105,6 +104,9 @@ module.exports = merge(commonConfig, {
   stats: "normal", //标准输出
   optimization: {
     splitChunks: {
+      chunks: "all",
+      minChunks: 1,
+      minSize: 1,
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,

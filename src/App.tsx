@@ -1,16 +1,20 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { Counter } from "./features/Counter/Counter";
-import Home from "./features/Home/Home";
-import About from "./features/About/About";
+import routes from "./routes";
 
 const App = () => {
   return (
     <>
       <h1>Welcome to React Router!</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        {routes.map((route, index) => (
+          <Route
+            path={route.path as string}
+            key="index"
+            element={route.element}
+          />
+        ))}
       </Routes>
       <hr />
       <Counter />
