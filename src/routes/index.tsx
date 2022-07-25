@@ -1,37 +1,37 @@
-import React, { lazy } from "react";
-import { RouteObject } from "react-router-dom";
-import Loadable from "react-loadable";
-import Loading from "@/features/Loading/Loading";
+import React, { Suspense, lazy } from "react";
+import { useRoutes, RouteObject } from "react-router-dom";
 
-// const Home = lazy(
-//   () => import(/* webpackChunkName: "home-component" */ "@/features/Home/Home")
-// );
-// const About = lazy(
-//   () =>
-//     import(/* webpackChunkName: "about-component" */ "@/features/About/About")
-// );
-
-const LoadableComponentHome = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "home-component" */ "@/features/Home/Home"),
-  loading: Loading,
-});
-
-const LoadableComponentAbout = Loadable({
-  loader: () =>
-    import(/* webpackChunkName: "about-component" */ "@/features/About/About"),
-  loading: Loading,
-});
-
-const router: RouteObject[] = [
+const RouteTable: SyncRoute.Routes[] = [
   {
     path: "/",
-    element: <LoadableComponentHome />,
-  },
-  {
-    path: "/about",
-    element: <LoadableComponentAbout />,
+    component: lazy(() => import("@/Layout")),
+    children: [
+      {
+        path: "/",
+        component: lazy(() => import("@/features/Home/Home")),
+      },
+      {
+        path: "about",
+        component: lazy(() => import("@/features/About/About")),
+      },
+    ],
   },
 ];
 
-export default router;
+const syncRouter = (table: SyncRoute.Routes[]): RouteObject[] => {
+  const mRouteTable: RouteObject[] = [];
+  table.forEach((route) => {
+    mRouteTable.push({
+      path: route.path,
+      element: (
+        <Suspense fallback={<div>路由加载ing...</div>}>
+          <route.component />
+        </Suspense>
+      ),
+      children: route.children && syncRouter(route.children),
+    });
+  });
+  return mRouteTable;
+};
+
+export default () => useRoutes(syncRouter(RouteTable));

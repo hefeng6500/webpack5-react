@@ -107,7 +107,7 @@ module.exports = merge(commonConfig, {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CleanWebpackPlugin(),
   ],
-  stats: "normal", //标准输出
+  // stats: "normal", //标准输出
   optimization: {
     splitChunks: {
       chunks: "all",
