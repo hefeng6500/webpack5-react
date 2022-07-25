@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
-console.log("src", path.resolve(__dirname, "../src"));
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -37,7 +37,10 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.tsx?$/,
+        use: [{ loader: "ts-loader" }],
+      },
     ],
   },
   plugins: [
@@ -45,6 +48,9 @@ module.exports = {
       filename: "index.html",
       template: "public/index.html",
       favicon: "public/favicon.ico",
+    }),
+    new ESLintPlugin({
+      fix: true,
     }),
   ],
 };

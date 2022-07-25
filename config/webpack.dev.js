@@ -12,6 +12,7 @@ module.exports = merge(commonConfig, {
     static: {
       directory: path.join(__dirname, "../public"),
     },
+    historyApiFallback: true,
     compress: true,
     port: 9000,
     http2: true,

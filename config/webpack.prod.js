@@ -15,6 +15,12 @@ module.exports = merge(commonConfig, {
   output: {
     filename: "./assets/[name]-[contenthash].js",
     path: path.resolve(__dirname, "../dist"),
+    chunkFilename: (pathData) => {
+      return pathData.chunk.name === "main"
+        ? "[name].js"
+        : "[name]/[contenthash].js";
+    },
+    asyncChunks: true,
   },
   externals: {
     react: "React",
