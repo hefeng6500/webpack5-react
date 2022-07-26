@@ -1,5 +1,4 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin"); //打包前清空build目录文件
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
@@ -13,14 +12,15 @@ const webpack = require("webpack");
 module.exports = merge(commonConfig, {
   mode: "production",
   output: {
-    filename: "./assets/[name]-[contenthash].js",
+    filename: "./[name]-[contenthash:8].js",
     path: path.resolve(__dirname, "../dist"),
     chunkFilename: (pathData) => {
       return pathData.chunk.name === "main"
         ? "[name].js"
-        : "[name]/[contenthash].js";
+        : "[name]/[contenthash:8].js";
     },
     asyncChunks: true,
+    clean: true,
   },
   externals: {
     react: "React",
@@ -105,7 +105,6 @@ module.exports = merge(commonConfig, {
     // open Scope Hoisting default by production mode
     // https://webpack.docschina.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new CleanWebpackPlugin(),
   ],
   // stats: "normal", //标准输出
   optimization: {

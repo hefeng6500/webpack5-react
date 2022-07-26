@@ -7,11 +7,12 @@ const resolve = (filename) => path.resolve(__dirname, filename);
 
 module.exports = merge(commonConfig, {
   mode: "development",
-  devtool: "source-map",
+  devtool: "inline-source-map",
   devServer: {
     static: {
       directory: path.join(__dirname, "../public"),
     },
+    hot: true,
     historyApiFallback: true,
     compress: true,
     port: 9000,
@@ -21,5 +22,6 @@ module.exports = merge(commonConfig, {
       cert: fs.readFileSync(resolve("./ssl/ssl.crt")),
     },
   },
+  stats: "errors-only",
   plugins: [],
 });

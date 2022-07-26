@@ -1,37 +1,47 @@
 import React, { Suspense, lazy } from "react";
 import { useRoutes, RouteObject } from "react-router-dom";
 
-const RouteTable: SyncRoute.Routes[] = [
+import Home from "@/features/Home/Home";
+import Layout from "@/Layout";
+
+const routes: AsyncRoute.Routes[] = [
   {
     path: "/",
-    component: lazy(() => import("@/Layout")),
+    component: Layout,
     children: [
       {
         path: "/",
-        component: lazy(() => import("@/features/Home/Home")),
+        component: Home,
       },
       {
         path: "about",
-        component: lazy(() => import("@/features/About/About")),
+        component: lazy(
+          () =>
+            import(
+              /* webpackChunkName: "about-chunk" */ "@/features/About/About"
+            )
+        ),
       },
     ],
   },
 ];
 
-const syncRouter = (table: SyncRoute.Routes[]): RouteObject[] => {
-  const mRouteTable: RouteObject[] = [];
+const asyncRouter = (table: AsyncRoute.Routes[]): RouteObject[] => {
+  const RoutesTable: RouteObject[] = [];
+
   table.forEach((route) => {
-    mRouteTable.push({
+    RoutesTable.push({
       path: route.path,
       element: (
-        <Suspense fallback={<div>路由加载ing...</div>}>
+        <Suspense fallback={<div>loading...</div>}>
           <route.component />
         </Suspense>
       ),
-      children: route.children && syncRouter(route.children),
+      children: route.children && asyncRouter(route.children),
     });
   });
-  return mRouteTable;
+
+  return RoutesTable;
 };
 
-export default () => useRoutes(syncRouter(RouteTable));
+export default () => useRoutes(asyncRouter(routes));

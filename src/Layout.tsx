@@ -4,7 +4,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 export default function Layout() {
   return (
     <div>
-      <nav>
+      {/* <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -15,7 +15,7 @@ export default function Layout() {
         </ul>
       </nav>
 
-      <hr />
+      <hr /> */}
 
       <Outlet />
     </div>
