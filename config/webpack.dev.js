@@ -7,7 +7,7 @@ const resolve = (filename) => path.resolve(__dirname, filename);
 
 module.exports = merge(commonConfig, {
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.join(__dirname, "../public"),
