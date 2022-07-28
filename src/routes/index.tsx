@@ -11,6 +11,7 @@ const routes: AsyncRoute.Routes[] = [
     children: [
       {
         path: "/",
+        index: true,
         component: Home,
       },
       {
