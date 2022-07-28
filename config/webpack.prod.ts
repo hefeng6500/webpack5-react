@@ -1,30 +1,39 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin"); //打包前清空build目录文件
+import * as path from "path";
+import * as webpack from "webpack";
+import commonConfig, { devMode } from "./webpack.common";
+
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
-const commonConfig = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const chalk = require("chalk");
 const CopyPlugin = require("copy-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
-const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = merge(commonConfig, {
+const config: webpack.Configuration = merge(commonConfig, {
   mode: "production",
+  devtool: false,
   output: {
-    filename: "[name].js",
+    filename: "./js/[name]-[contenthash:8].js",
     path: path.resolve(__dirname, "../dist"),
+    chunkFilename: (pathData: any) => {
+      return pathData.chunk.name === "main"
+        ? "js/[name].js"
+        : "js/[name]/[contenthash:8].js";
+    },
+    asyncChunks: true,
+    clean: true,
   },
   externals: {
     react: "React",
     "react-dom": "ReactDOM",
   },
-  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        enforce: "pre",
         use: [
           {
             loader: "thread-loader",
@@ -82,6 +91,12 @@ module.exports = merge(commonConfig, {
     //     },
     //   ],
     // }),
+    new MiniCssExtractPlugin({
+      filename: devMode ? "[name].css" : "css/[name].[contenthash:8].css",
+      chunkFilename: devMode
+        ? "[id].css"
+        : "css/[name].[id].[contenthash:8].css",
+    }),
     new ProgressBarPlugin({
       format:
         `${chalk.green.bold("build[:bar]")} ` +
@@ -100,13 +115,18 @@ module.exports = merge(commonConfig, {
     // open Scope Hoisting default by production mode
     // https://webpack.docschina.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new CleanWebpackPlugin(),
   ],
   stats: "normal", //标准输出
   optimization: {
+    runtimeChunk: "single",
+    moduleIds: "deterministic",
+    minimize: true,
     splitChunks: {
+      chunks: "all",
+      minChunks: 1,
+      minSize: 1,
       cacheGroups: {
-        commons: {
+        vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendors",
           chunks: "all",
@@ -122,3 +142,5 @@ module.exports = merge(commonConfig, {
     },
   },
 });
+
+export default config;
