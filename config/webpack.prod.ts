@@ -10,6 +10,7 @@ const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 
 const config: webpack.Configuration = merge(commonConfig, {
   mode: "production",
@@ -115,6 +116,7 @@ const config: webpack.Configuration = merge(commonConfig, {
     // open Scope Hoisting default by production mode
     // https://webpack.docschina.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new CaseSensitivePathsPlugin(),
   ],
   stats: "normal", //标准输出
   optimization: {
