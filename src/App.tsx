@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useState } from "react";
 import { Routes, Route, Link, Outlet, Router } from "react-router-dom";
-import { Counter } from "./features/Counter/Counter";
+import { Counter } from "@/features/Counter/Counter";
 import RouterTable from "./routes";
 
 function App() {
