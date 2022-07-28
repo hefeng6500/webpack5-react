@@ -1,39 +1,42 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will install Deno and run tests across stable and nightly builds on Windows, Ubuntu and macOS.
+# For more information see: https://github.com/denolib/setup-deno
 
 name: Build and Deploy
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [master]
   pull_request:
-    branches: [ "master" ]
+    branches: [master]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }} # runs a test on Ubuntu, Windows and macOS
 
     strategy:
       matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node: [16]
         os: [ubuntu-latest]
 
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v3
-      
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v1
+    - name: Use Node.js 15.x
+      uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: |
-        npm ci
-        npm run build
-    
+        node-version: 15.x
+
+    - name: yarn install, build
+      run: |
+        yarn
+        yarn build
+        
     - name: Deploy To Github.io 🚀
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
         BRANCH: gh-pages
         FOLDER: dist
