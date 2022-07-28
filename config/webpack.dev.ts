@@ -1,11 +1,12 @@
-const path = require("path");
-const fs = require("fs");
+import commonConfig from "./webpack.common";
+import * as path from "path";
+import * as fs from "fs";
+import * as webpack from "webpack";
+
 const { merge } = require("webpack-merge");
-const commonConfig = require("./webpack.common");
+const resolve = (filename: string) => path.resolve(__dirname, filename);
 
-const resolve = (filename) => path.resolve(__dirname, filename);
-
-module.exports = merge(commonConfig, {
+const config: webpack.Configuration = merge(commonConfig, {
   mode: "development",
   devtool: "source-map",
   devServer: {
@@ -24,4 +25,7 @@ module.exports = merge(commonConfig, {
   },
   stats: "errors-only",
   plugins: [],
+  optimization: {},
 });
+
+export default config;
