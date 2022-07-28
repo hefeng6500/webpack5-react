@@ -3,5 +3,6 @@ namespace AsyncRoute {
     path: string;
     component: React.LazyExoticComponent;
     children?: Routes[];
+    index?: boolean;
   };
 }
