@@ -25,9 +25,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm ci
-    - run: pnpm run build
+        cache: 'npm'
+    - run: |
+        npm ci
+        npm run build
     
     - name: Deploy To Github.io 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.5
