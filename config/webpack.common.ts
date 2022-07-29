@@ -16,6 +16,7 @@ const config: webpack.Configuration = {
       "@": path.resolve(__dirname, "../src"),
     },
   },
+  watch: true,
   module: {
     rules: [
       {

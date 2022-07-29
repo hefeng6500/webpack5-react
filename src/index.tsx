@@ -3,7 +3,7 @@ import "@babel/polyfill";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-import App from "./App";
+import App from "./app";
 
 import store from "./store";
 import { Provider } from "react-redux";

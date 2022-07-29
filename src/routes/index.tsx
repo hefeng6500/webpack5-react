@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { useRoutes, RouteObject } from "react-router-dom";
 
-import Home from "@/features/Home/Home";
-import Layout from "@/Layout";
+import Home from "@/features/home/home";
+import Layout from "@/layout";
 
 const routes: AsyncRoute.Routes[] = [
   {
@@ -19,7 +19,7 @@ const routes: AsyncRoute.Routes[] = [
         component: lazy(
           () =>
             import(
-              /* webpackChunkName: "about-chunk" */ "@/features/About/About"
+              /* webpackChunkName: "about-chunk" */ "@/features/about/about"
             )
         ),
       },
