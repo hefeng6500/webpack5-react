@@ -8,13 +8,13 @@ An awesome React project use by Webpack5, React18, TypeScript.
 ## Quick Start
 
 ```shell
-npm install
+pnpm install
+# or npm install
 # or yarn install
-# or pnpm install
 ```
 
 ```shell
-npm run dev
-# or pnpm dev
+pnpm dev
+# or npm run dev
 # or yarn dev
 ```
