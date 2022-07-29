@@ -81,6 +81,7 @@ const config: webpack.Configuration = merge(commonConfig, {
     ],
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
     }),
@@ -116,7 +117,6 @@ const config: webpack.Configuration = merge(commonConfig, {
     // open Scope Hoisting default by production mode
     // https://webpack.docschina.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new CaseSensitivePathsPlugin(),
   ],
   stats: "normal", //标准输出
   optimization: {
