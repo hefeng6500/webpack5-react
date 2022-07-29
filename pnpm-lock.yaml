@@ -20,6 +20,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.30.7
   autoprefixer: ^10.4.7
   babel-loader: ^8.2.5
+  case-sensitive-paths-webpack-plugin: ^2.4.0
   chalk: ^4.1.2
   copy-webpack-plugin: ^11.0.0
   cross-env: ^7.0.3
@@ -87,6 +88,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.31.0_eslint@8.20.0+typescript@4.7.4
   autoprefixer: 10.4.7
   babel-loader: 8.2.5_c6d75f4dbec394724794fdd3c4eb4fbf
+  case-sensitive-paths-webpack-plugin: 2.4.0
   chalk: 4.1.2
   copy-webpack-plugin: 11.0.0_webpack@5.74.0
   cross-env: 7.0.3
@@ -2594,6 +2596,11 @@ packages:
 
   /caniuse-lite/1.0.30001373:
     resolution: {integrity: sha512-pJYArGHrPp3TUqQzFYRmP/lwJlj8RCbVe3Gd3eJQkAV8SAC6b19XS9BjMvRdvaS8RMkaTN8ZhoHP6S1y8zzwEQ==}
+    dev: true
+
+  /case-sensitive-paths-webpack-plugin/2.4.0:
+    resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
+    engines: {node: '>=4'}
     dev: true
 
   /caseless/0.12.0:

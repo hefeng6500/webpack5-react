@@ -9,7 +9,6 @@ const resolve = (filename: string) => path.resolve(__dirname, filename);
 const config: webpack.Configuration = merge(commonConfig, {
   mode: "development",
   devtool: "source-map",
-  watch: true,
   devServer: {
     static: {
       directory: path.join(__dirname, "../public"),
