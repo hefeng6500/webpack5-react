@@ -11,7 +11,7 @@ const config: webpack.Configuration = {
     main: "./src/index",
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },
