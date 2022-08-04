@@ -86,7 +86,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "browserslist": {
