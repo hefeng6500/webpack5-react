@@ -49,12 +49,12 @@ export function Counter() {
         >
           Add Amount
         </button>
-        {/* <button
+        <button
           className={styles["async-button"]}
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
           Add Async
-        </button> */}
+        </button>
       </div>
     </div>
   );

@@ -57,7 +57,6 @@ export const incrementAsync = createAsyncThunk(
   async (amount: number) => {
     const response = await fetchCount(amount);
     // The value we return becomes the `fulfilled` action payload
-    debugger;
     return response.data;
   }
 );

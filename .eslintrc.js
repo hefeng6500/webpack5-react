@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-require-imports": "error",
     "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/no-misused-promises": "warn",
   },
   ignorePatterns: [
     "node_modules",
