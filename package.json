@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.ts",
     "dll": "webpack --config config/webpack.dll.ts",
     "lint": "eslint . --ext .ts",
+    "stylelint": "stylelint src/**/*.scss src/**/*.css",
     "prepare": "husky install",
     "test": ""
   },
@@ -58,6 +59,9 @@
     "sass-loader": "^13.0.2",
     "source-map-loader": "^4.0.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^26.0.0",
     "thread-loader": "^3.0.4",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.9.1",
@@ -85,6 +89,9 @@
     "src/**/*.{tsx,ts}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    "src/**/*.css": [
+      "npm run stylelint"
     ]
   },
   "commitlint": {

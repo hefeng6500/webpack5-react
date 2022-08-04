@@ -13,12 +13,11 @@
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 2px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .button {
   appearance: none;
-  border: none;
   background: none;
   font-size: 32px;
   padding-left: 12px;
@@ -41,7 +40,8 @@
   margin-right: 8px;
 }
 
-.button:hover, .button:focus {
+.button:hover,
+.button:focus {
   border: 2px solid rgba(112, 76, 182, 0.4);
 }
 
@@ -49,13 +49,12 @@
   background-color: rgba(112, 76, 182, 0.2);
 }
 
-.asyncButton {
-  composes: button;
+.async-button {
   position: relative;
   margin-left: 8px;
 }
 
-.asyncButton:after {
+.async-button::after {
   content: "";
   background-color: rgba(112, 76, 182, 0.15);
   display: block;
@@ -68,8 +67,8 @@
   transition: width 1s linear, opacity 0.5s ease 1s;
 }
 
-.asyncButton:active:after {
-  width: 0%;
+.async-button:active::after {
+  width: 0;
   opacity: 1;
-  transition: 0s
+  transition: 0s;
 }
