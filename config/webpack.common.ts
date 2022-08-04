@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "production";

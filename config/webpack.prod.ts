@@ -1,6 +1,6 @@
 import * as path from "path";
 import * as webpack from "webpack";
-import commonConfig, { devMode } from "./webpack.common";
+import commonConfig from "./webpack.common";
 
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const { merge } = require("webpack-merge");
@@ -94,10 +94,8 @@ const config: webpack.Configuration = merge(commonConfig, {
     //   ],
     // }),
     new MiniCssExtractPlugin({
-      filename: devMode ? "[name].css" : "css/[name].[contenthash:8].css",
-      chunkFilename: devMode
-        ? "[id].css"
-        : "css/[name].[id].[contenthash:8].css",
+      filename: "css/[name].[contenthash:8].css",
+      chunkFilename: "css/[name].[id].[contenthash:8].css",
     }),
     new ProgressBarPlugin({
       format:
