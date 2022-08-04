@@ -3,6 +3,12 @@ import { Routes, Route, Link, Outlet, Router } from "react-router-dom";
 import { Counter } from "@/features/counter/counter";
 import RouterTable from "./routes";
 
+function aaa() {
+  console.log(123);
+}
+
+window.onload = aaa;
+
 function App() {
   return (
     <>
