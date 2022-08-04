@@ -3,6 +3,10 @@ import { Routes, Route, Link, Outlet, Router } from "react-router-dom";
 import { Counter } from "@/features/counter/counter";
 import RouterTable from "./routes";
 
+console.log("====================================");
+console.log(1);
+console.log("====================================");
+
 function App() {
   return (
     <>
