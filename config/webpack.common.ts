@@ -19,7 +19,7 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.((c|sa|sc)ss)$/i,
+        test: /\.((c|le)ss)$/i,
         use: [
           devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           {
@@ -29,17 +29,25 @@ const config: webpack.Configuration = {
               // 如果您需要在每个 CSS 的 `@import` 上运行 `sass-loader` 和 `postcss-loader`，请将其设置为 `2`。
               importLoaders: 1,
               modules: {
+                mode: "local",
+                auto: true,
+                exportGlobals: true,
                 localIdentName: devMode
                   ? "[path][name]__[local]"
                   : "[hash:base64:8]",
-                exportLocalsConvention: "camelCase",
+                localIdentContext: path.resolve(__dirname, "src"),
               },
               sourceMap: true,
             },
           },
           "postcss-loader",
           {
-            loader: "sass-loader",
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
           },
         ],
       },
