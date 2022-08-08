@@ -9,7 +9,6 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.ts",
     "dll": "webpack --config config/webpack.dll.ts",
     "lint": "eslint . --ext .ts",
-    "stylelint": "stylelint src/**/*.scss src/**/*.css",
     "prepare": "husky install",
     "test": ""
   },
@@ -91,7 +90,7 @@
       "eslint --fix"
     ],
     "src/**/*.css": [
-      "npm run stylelint"
+      "stylelint src/**/*.scss src/**/*.css"
     ]
   },
   "commitlint": {
