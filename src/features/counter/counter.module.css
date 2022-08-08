@@ -51,6 +51,7 @@
 }
 
 .async-custom-button {
+  /* composes: button; */
   position: relative;
 }
 
